@@ -103,6 +103,7 @@ public class DevController {
 
     @GetMapping("/feign-call-test")
     public String feignCallTest() {
-        return "captchaOtpConsumer.test():" + captchaOtpConsumer.test();
+        String accessToken = "AAA";
+        return "captchaOtpConsumer.test():" + captchaOtpConsumer.test(accessToken);
     }
 }
