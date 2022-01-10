@@ -22,7 +22,8 @@ generate public and private key steps:
 - IntelijIDEA: Help -> Edit Custom Vm Options -> add these two line:
     - -Dfile.encoding=UTF-8
     - -Dconsole.encoding=UTF-8
-- IntelijIDEA: File -> Settings -> Editor -> File Encodings-> Project Encoding: form "System default" to UTF-8. May be it affected somehow.
+- IntelijIDEA: File -> Settings -> Editor -> File Encodings-> Project Encoding: form "System default" to UTF-8. Maybe it affected somehow.
+- IntelijIDEA: File -> Settings -> Editor -> File Encodings-> Default Encoding for properties files:  UTF-8.
 - IntelijIDEA: File -> Settings -> Editor -> General -> Code Completion -> check "show the documentation popup in 500 ms"
 - IntelijIDEA: File -> Settings -> Editor -> General -> Auto Import -> check "Optimize imports on the fly (for current project)"
 - IntelijIDEA: File -> Settings -> Editor -> Color Scheme -> Color Scheme Font -> Scheme: Default -> uncheck "Show only monospaced fonts" and set font to "Tahoma"
