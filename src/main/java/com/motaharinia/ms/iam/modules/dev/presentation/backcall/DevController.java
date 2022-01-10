@@ -1,12 +1,14 @@
 package com.motaharinia.ms.iam.modules.dev.presentation.backcall;
 
 import com.motaharinia.ms.iam.config.security.oauth2.dto.BearerTokenDto;
+import com.motaharinia.ms.iam.external.co.CaptchaOtpConsumer;
 import com.motaharinia.ms.iam.modules.appuser.business.service.AppUserService;
 import com.motaharinia.ms.iam.modules.backuser.business.BackUserService;
 import com.motaharinia.ms.iam.modules.securityuser.business.service.SecurityUserService;
 import com.motaharinia.ms.iam.modules.securityuser.persistence.orm.SecurityUser;
 import com.motaharinia.msutility.custom.customdto.ClientResponseDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -23,6 +25,9 @@ import java.util.Optional;
 @Slf4j
 @RequestMapping("/api/v1.0/back/dev")
 public class DevController {
+
+    @Autowired
+    private CaptchaOtpConsumer captchaOtpConsumer;
 
     @Value("${app.security.test-activated:false}")
     private boolean securityTestActivated;
@@ -94,5 +99,10 @@ public class DevController {
             }
         }
         return stringBuilder.toString();
+    }
+
+    @GetMapping("/feign-call-test")
+    public String feignCallTest() {
+        return "captchaOtpConsumer.test():" + captchaOtpConsumer.test();
     }
 }
