@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * @author pourya<br>
+ * @author eng.motahari@gmail.com<br>
  * کلاس مدل جستجوی کاربر کلاینت
  */
 @Data

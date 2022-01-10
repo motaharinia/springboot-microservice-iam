@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * @author m.azish
+ * @author eng.motahari@gmail.com<br>
  */
 public class GenerateRandomString {
 

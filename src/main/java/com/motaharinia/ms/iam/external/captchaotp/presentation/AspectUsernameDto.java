@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * @author m.azish
+ * @author eng.motahari@gmail.com<br>
  * کلاس مدل کلمه کاربری برای انوتیشن های کاربر محور
  */
 @Data

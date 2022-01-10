@@ -83,7 +83,7 @@ public class RateLimitAspect {
     }
 
     /**
-     * @author pourya
+     * @author eng.motahari@gmail.com
      * متد دریافت پارامتر متد براساس نوع
      */
     private Object getParameter(JoinPoint joinPoint, Class parameterType) {

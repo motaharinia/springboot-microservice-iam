@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @author m.azish
+ * @author eng.motahari@gmail.com<br>
  * کلاس جنریت کردن کوئری پرمیژن کاربر برنامه بک
  */
 public class AuthorityConstantBuilder {

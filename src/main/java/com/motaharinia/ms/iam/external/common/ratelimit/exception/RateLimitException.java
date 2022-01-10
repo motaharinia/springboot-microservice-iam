@@ -5,7 +5,7 @@ import com.motaharinia.msutility.custom.customexception.business.BusinessExcepti
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @author pourya <br>
+ * @author eng.motahari@gmail.com <br>
  * rateLimit کلاس خطا
  */
 public class RateLimitException extends BusinessException {

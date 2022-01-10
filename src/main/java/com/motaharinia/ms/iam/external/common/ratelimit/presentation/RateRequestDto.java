@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author pourya
+ * @author eng.motahari@gmail.com
  * کلاس مدل درخواست محدودیت بازدید
  */
 @Data

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @author pourya <br>
+ * @author eng.motahari@gmail.com <br>
  * کلاس مدل کاربر کلاینت
  */
 @Data

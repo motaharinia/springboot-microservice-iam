@@ -24,7 +24,7 @@ import java.util.Locale;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * @author pourya
+ * @author eng.motahari@gmail.com
  * @date 2021-08-28
  * client کلاس تیت یکپارچه کاربر
  */

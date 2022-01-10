@@ -146,12 +146,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
                 //------------------------------------------------------------------------------------------------------------
                 //این دسترسی ها فقط برای اجرای متد تست ایجاد شده اند و باید حذف شوند
-                //.antMatchers("/api/v1.0/security-permission/**").permitAll()//addedByAzish
-                //.antMatchers("/api/v1.0/security-role/**").permitAll()//addedByAzish
-                //.antMatchers("/api/v1.0/app-user/**").permitAll()//addedByAzish
-                //.antMatchers("/api/v1.0/back-user/**").permitAll()//addedByAzish
-                //.antMatchers("/api/v1.0/security-token/**").permitAll()//addedByAzish
-                //.antMatchers("/api/v1.0/security-user/**").permitAll()//addedByAzish
+                //.antMatchers("/api/v1.0/security-permission/**").permitAll()//addedByMotaharinia
+                //.antMatchers("/api/v1.0/security-role/**").permitAll()//addedByMotaharinia
+                //.antMatchers("/api/v1.0/app-user/**").permitAll()//addedByMotaharinia
+                //.antMatchers("/api/v1.0/back-user/**").permitAll()//addedByMotaharinia
+                //.antMatchers("/api/v1.0/security-token/**").permitAll()//addedByMotaharinia
+                //.antMatchers("/api/v1.0/security-user/**").permitAll()//addedByMotaharinia
                 //------------------------------------------------------------------------------------------------------------
                 .anyRequest().authenticated()
                 .and()

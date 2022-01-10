@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author m.azish
+ * @author eng.motahari@gmail.com<br>
  * کلاس آیتم های batch
  */
 @Data
