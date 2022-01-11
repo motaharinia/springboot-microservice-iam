@@ -26,7 +26,8 @@ import java.util.Optional;
 import static net.logstash.logback.argument.StructuredArguments.kv;
 
 /**
- *کلاس مدیریت یکپارچه خطای دریافتی در rest یا graphql
+ * @author eng.motahari@gmail.com<br>
+ * کلاس مدیریت یکپارچه خطای دریافتی در rest یا graphql
  */
 @Component
 @Slf4j
@@ -58,8 +59,9 @@ public class ExceptionLogger {
 
     /**
      * این متد خطای دریافتی در rest یا graphql را یکپارچه مدیریت میکند
-     * @param exception خطا
-     * @param httpServletRequest شیی درخواست وب
+     *
+     * @param exception           خطا
+     * @param httpServletRequest  شیی درخواست وب
      * @param httpServletResponse شیی پاسخ وب
      * @return خروجی: پاسخ فرانت
      */
@@ -67,7 +69,7 @@ public class ExceptionLogger {
 
         //مدیریت خطای 403 برای متدهای preAuthorize که به متد accessDeniedHandler تنظیمات ریسورس نمیرود
         if (exception instanceof AccessDeniedException) {
-            securityException403(httpServletRequest,httpServletResponse,messageSource);
+            securityException403(httpServletRequest, httpServletResponse, messageSource);
             return null;
         }
 
@@ -78,7 +80,7 @@ public class ExceptionLogger {
         if (loggedInUserDtoOptional.isPresent()) {
             userId = loggedInUserDtoOptional.get().getId();
             username = loggedInUserDtoOptional.get().getUsername();
-        }else {
+        } else {
             Optional<LoggedInClientDto> loggedInClientDtoOptional = resourceClientTokenProvider.getLoggedInDto();
             if (loggedInClientDtoOptional.isPresent()) {
                 userId = loggedInClientDtoOptional.get().getId();
@@ -96,11 +98,11 @@ public class ExceptionLogger {
         log.error("ResponseException: {} StackTrace:{}", clientResponseDto.getException().getMessage(), clientResponseDto.getException().getMessageDtoList().get(0).getStackTrace());
 
         //اگر خطای استانداری از ماکرو سرویس های دیگر داشتیم آن را به جای پیام خطای اصلی جایگزین میکنیم
-        if(!ObjectUtils.isEmpty(clientResponseDto.getException().getExternalMessage())){
+        if (!ObjectUtils.isEmpty(clientResponseDto.getException().getExternalMessage())) {
             clientResponseDto.setMessage(clientResponseDto.getException().getExternalMessage());
         }
 
-        if (environment.getActiveProfiles().length > 0 && Arrays.stream(environment.getActiveProfiles()).anyMatch(value -> value.equals("prod")   )) {
+        if (environment.getActiveProfiles().length > 0 && Arrays.stream(environment.getActiveProfiles()).anyMatch(value -> value.equals("prod"))) {
             clientResponseDto.getException().setExceptionClassName("here is production");
             clientResponseDto.getException().setAppPort("here is production");
             if (clientResponseDto.getException().getType().equals(ExceptionTypeEnum.EXTERNAL_CALL_EXCEPTION)) {
@@ -109,8 +111,8 @@ public class ExceptionLogger {
                 clientResponseDto.getException().setDataId("here is production");
             }
             if (clientResponseDto.getException().getType().equals(ExceptionTypeEnum.GENERAL_EXCEPTION)) {
-                clientResponseDto.getException().setMessage(StringTools.translateCustomMessage(messageSource,"GENERAL_EXCEPTION"));
-                clientResponseDto.setMessage(StringTools.translateCustomMessage(messageSource,"GENERAL_EXCEPTION"));
+                clientResponseDto.getException().setMessage(StringTools.translateCustomMessage(messageSource, "GENERAL_EXCEPTION"));
+                clientResponseDto.setMessage(StringTools.translateCustomMessage(messageSource, "GENERAL_EXCEPTION"));
                 clientResponseDto.getException().setMessageDtoList(new ArrayList<>());
                 clientResponseDto.getException().setDescription("here is production");
                 clientResponseDto.getException().setDataId("here is production");
@@ -123,17 +125,18 @@ public class ExceptionLogger {
 
     /**
      * متد بررسی خطای 401 عدم احراز هویت امنیت
-     * @param httpServletRequest شیی درخواست وب
+     *
+     * @param httpServletRequest  شیی درخواست وب
      * @param httpServletResponse شیی پاسخ وب
      */
-    public static void securityException401(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse,MessageSource messageSource){
+    public static void securityException401(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, MessageSource messageSource) {
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("timestamp", CalendarTools.getCurrentJalaliDateTimeString("/"));
         jsonObject.put("api_url", getFullURL(httpServletRequest));
         jsonObject.put("api_method", httpServletRequest.getMethod());
-        jsonObject.put("message", StringTools.translateCustomMessage(messageSource,SECURITY_EXCEPTION_401));
+        jsonObject.put("message", StringTools.translateCustomMessage(messageSource, SECURITY_EXCEPTION_401));
         try {
             httpServletResponse.getWriter().write(jsonObject.toString());
         } catch (Exception getWriterException) {
@@ -143,17 +146,18 @@ public class ExceptionLogger {
 
     /**
      * متد بررسی خطای 403 عدم دسترسی امنیت
-     * @param httpServletRequest شیی درخواست وب
+     *
+     * @param httpServletRequest  شیی درخواست وب
      * @param httpServletResponse شیی پاسخ وب
      */
-    public static void securityException403(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse,MessageSource messageSource){
+    public static void securityException403(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, MessageSource messageSource) {
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         httpServletResponse.setStatus(HttpServletResponse.SC_FORBIDDEN);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("timestamp", CalendarTools.getCurrentJalaliDateTimeString("/"));
         jsonObject.put("api_url", getFullURL(httpServletRequest));
         jsonObject.put("api_method", httpServletRequest.getMethod());
-        jsonObject.put("message", StringTools.translateCustomMessage(messageSource,SECURITY_EXCEPTION_403) );
+        jsonObject.put("message", StringTools.translateCustomMessage(messageSource, SECURITY_EXCEPTION_403));
         try {
             httpServletResponse.getWriter().write(jsonObject.toString());
         } catch (Exception getWriterException) {
@@ -163,6 +167,7 @@ public class ExceptionLogger {
 
     /**
      * متد به دست آورنده url از روی شیی درخواست وب
+     *
      * @param httpServletRequest شیی درخواست وب
      * @return خروجی: مسیر
      */

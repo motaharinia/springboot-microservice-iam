@@ -19,11 +19,10 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * User: https://github.com/motaharinia<br>
- * Date: 2020-07-01<br>
- * Time: 16:49:12<br>
- * Description:<br>
+ * @author eng.motahari@gmail.com<br>
+ * کلاس مدیریت interceptor grpc برای ثبت interceptor مدیریت خطاها
  */
 
 @Configuration

@@ -11,6 +11,11 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import th.co.geniustree.springdata.jpa.repository.support.JpaSpecificationExecutorWithProjectionImpl;
 
+/**
+ * @author eng.motahari@gmail.com<br>
+ * کلاس تنظیمات jpa و دیتابیس
+ */
+
 @Configuration
 @EnableJpaRepositories(repositoryBaseClass = JpaSpecificationExecutorWithProjectionImpl.class, basePackages = {"com.motaharinia"})
 @EnableTransactionManagement
