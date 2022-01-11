@@ -1,6 +1,7 @@
 package com.motaharinia.ms.iam.config.feign;
 
-import org.apache.commons.lang3.ObjectUtils;
+
+import org.springframework.util.ObjectUtils;
 
 import java.util.Arrays;
 
@@ -8,11 +9,15 @@ import java.util.Arrays;
  * @author eng.motahari@gmail.com<br>
  * مقادیر ثابت فراخوانی های بیرونی سرویسهای پروژه
  */
+
 public enum FeignCallEnum {
     /**
      * دریافت تصویر کپچا
      */
     REQ_1001("CaptchaOtpConsumer#create(SourceProjectEnum,String,Integer,Long)"),
+    /**
+     * بررسی تصویر کپچا
+     */
     REQ_1002("CaptchaOtpConsumer#check(SourceProjectEnum,String,String,String,String,Integer,Integer,Integer)");
 
     private final String value;
